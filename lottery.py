@@ -41,7 +41,7 @@ def showstatistic():
 # Сохраняет результаты в файл
 def saveresult(filapath):
 	'''Сохраняет результат игры  в файл, путь к файлу'''
-	f = open(filapath+".csv", 'a', encoding="utf-8")
+	f = open(filapath+".csv", 'a')
 	if os.path.getsize(filapath+'.csv') == 0:
 		f.write('Номер игры,')
 		k=1
