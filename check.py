@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
 #сумма чисел
 def sum(list):
 	k=0
