@@ -3,6 +3,7 @@
 from random import randint
 from check import *
 import os
+import sys
 #MySet = input('Enter 5 numbers from 1 to 49: ')
 #MySet = MySet.split(" ")
 # Инициализация переменных
@@ -17,20 +18,26 @@ MySet = []
 counterwiner = {x : 0 for x in range(0, countnum+1)}
 statistic = {x : 0 for x in range(1,maxnum)}
 level = 4 # количество совпадений для записи в файл result
-initval = 0 # инициализация значений для лотереи (0/1)
+
+if int(len(sys.argv)) == 1:
+	initval = 0
+else: initval = int(sys.argv[1]) # инициализация значений для лотереи (0/1)
+
 def init(values):
 	'''	Устанавливаем параметры для игры'''
 	if values == 1:
 		global countnum, counterwiner, diver, maxnum, level, allBols, statistic
-		
-		countnum = int(input('Количество чисел в наборе: '))
-		maxnum = int(input('Количество чисел в игре: '))
-		
+		print('Количество чисел в наборе: ' + sys.argv[2])
+		countnum = int(sys.argv[2])
+		#print('Количество чисел в игре: ' + int(sys.argv[3])
+		maxnum = int(sys.argv[3])
 		counterwiner = {x : 0 for x in range(0, countnum+1)}
 		allBols = [x for x in range(1,maxnum+1)]
 		statistic = {x : 0 for x in range(1,maxnum+1)}
-		diver = int(input('Введите число, кратный номер игры будет отображен на экране: '))
-		level = int(input('Введите число, совпавшее количесво шаров будет сохранено в файл: '))
+		print('Введите число, кратный номер игры будет отображен на экране: '+ sys.argv[4])
+		diver = int(sys.argv[4])
+		print('Введите число, совпавшее количесво шаров будет сохранено в файл: '+ sys.argv[5])
+		level = int(sys.argv[5])
 	else: pass
 
 # Показать статистику
