@@ -39,8 +39,8 @@ def init(values):
 		print('Введите число, совпавшее количесво шаров будет сохранено в файл: '+ sys.argv[5])
 		level = int(sys.argv[5])
 	if values == '/help':
-		print('Для инициализации игры передайе параметры: 1 10 5 49 10000 0')
-		print('Примет:pthon lottery.py 1 5 49 10000 5')
+		print('Для инициализации игры передайе параметры')
+		print('Примет: pthon lottery.py 1 5 49 10000 5')
 		print(input('Готовы попробовать? Надми Enter' ))
 	else: pass
 
@@ -48,7 +48,7 @@ def init(values):
 def showstatistic():
 	'''Метод выводит статистику выпадения'''
 	for i in statistic.keys():
-		print(str(i) + ' выпал ' +str(statistic[i]) + ' раза : ' +  str(statistic[i]/(count*countnum)) + '%')	
+		print(str(i) + ' выпал ' +str(statistic[i]) + ' раза : ' +  str(float(statistic[i]/(count*countnum))) + '%')	
 # Сохраняет результаты в файл
 def saveresult(filapath):
 	'''Сохраняет результат игры  в файл, путь к файлу'''
@@ -86,7 +86,7 @@ def showresult(status):
 	print(' Ваша комбинация:    '+str(MySet))
 	print("Сумма="+ str(sum(MySet)) + " Ч/НЧ=" + str(even_number(MySet)) + "/" + str(odd_number(MySet)) + " MГ=" + str(SmallG(MySet, maxnum-1)) + " БГ=" + str(GigG(MySet, maxnum-1)) + " Совпало=" +str(countnum-len(set(MySet) - set(GameSet))) )
 	for i in counterwiner:
-		print(str(countnum - i) +' совпадений '+ "{:,}".format(counterwiner.get(i)) + ' : ' + str(counterwiner.get(i)/count) + '%')
+		print(str(countnum - i) +' совпадений '+ "{:,}".format(counterwiner.get(i)) + ' : ' + str(float(counterwiner.get(i))/count) + '%')
 
 # уровень легирования
 def loglevel(level):
