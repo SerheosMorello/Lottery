@@ -20,16 +20,16 @@ statistic = {x : 0 for x in range(1,maxnum)}
 level = 4 # количество совпадений для записи в файл result
 
 if int(len(sys.argv)) == 1:
-	initval = 0
-else: initval = int(sys.argv[1]) # инициализация значений для лотереи (0/1)
+	initval = ''
+else: initval = sys.argv[1] # инициализация значений для лотереи (0/1)
 
 def init(values):
-	'''	Устанавливаем параметры для игры'''
-	if values == 1:
-		global countnum, counterwiner, diver, maxnum, level, allBols, statistic
+	'''Устанавливаем параметры для игры'''
+	if values == '1':
+		global countnum, maxnum, counterwiner, allBols, statistic, diver, level
 		print('Количество чисел в наборе: ' + sys.argv[2])
 		countnum = int(sys.argv[2])
-		#print('Количество чисел в игре: ' + int(sys.argv[3])
+		print('Количество чисел в игре: ' + sys.argv[3])
 		maxnum = int(sys.argv[3])
 		counterwiner = {x : 0 for x in range(0, countnum+1)}
 		allBols = [x for x in range(1,maxnum+1)]
@@ -38,6 +38,10 @@ def init(values):
 		diver = int(sys.argv[4])
 		print('Введите число, совпавшее количесво шаров будет сохранено в файл: '+ sys.argv[5])
 		level = int(sys.argv[5])
+	if values == '/help':
+		print('Для инициализации игры передайе параметры: 1 10 5 49 10000 0')
+		print('Примет:pthon lottery.py 1 5 49 10000 5')
+		print(input('Готовы попробовать? Надми Enter' ))
 	else: pass
 
 # Показать статистику
@@ -72,11 +76,12 @@ def saveresult(filapath):
 	f.close()
 # Выводит результаты на экран
 def showresult(status): 
+	object = [countnum, maxnum, diver, level]
 	'''Метод показывает результат игры, status - результат игры (0/1) (Игра окончена/Игра продолжается)'''
 	if status == 0:
-		print('Розыгрыш № '+ "{:,}".format(count) + ' Игра окончена')
+		print('Розыгрыш № '+ "{:,}".format(count) + ' Игра окончена' + str(object))
 	else: 
-		print('Розыгрыш № '+ "{:,}".format(count) + ' игра продолжается...')
+		print('Розыгрыш № '+ "{:,}".format(count) + ' игра продолжается... ' + str(object[0]) + ' из ' + str(object[1]))
 	print(' Выпавшая комбинация: ' +str(GameSet))
 	print(' Ваша комбинация:    '+str(MySet))
 	print("Сумма="+ str(sum(MySet)) + " Ч/НЧ=" + str(even_number(MySet)) + "/" + str(odd_number(MySet)) + " MГ=" + str(SmallG(MySet, maxnum-1)) + " БГ=" + str(GigG(MySet, maxnum-1)) + " Совпало=" +str(countnum-len(set(MySet) - set(GameSet))) )
