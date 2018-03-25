@@ -86,7 +86,7 @@ def showresult(status):
 	print(' Ваша комбинация:    '+str(MySet))
 	print("Сумма="+ str(sum(MySet)) + " Ч/НЧ=" + str(even_number(MySet)) + "/" + str(odd_number(MySet)) + " MГ=" + str(SmallG(MySet, maxnum-1)) + " БГ=" + str(GigG(MySet, maxnum-1)) + " Совпало=" +str(countnum-len(set(MySet) - set(GameSet))) )
 	for i in counterwiner:
-		print(str(countnum - i) +' совпадений '+ "{:,}".format(counterwiner.get(i)) + ' : ' + str(float(counterwiner.get(i))/count) + '%')
+		print(str(countnum - i) +' совпадений '+ "{:,}".format(counterwiner.get(i)) + ' : ' + str(float(counterwiner.get(i)/count)) + '%')
 
 # уровень легирования
 def loglevel(level):
